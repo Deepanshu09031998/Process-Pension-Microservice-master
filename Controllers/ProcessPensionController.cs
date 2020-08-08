@@ -62,24 +62,13 @@ namespace ProcessPension.Controllers
                 return mvc;
             }
            
-            int bankType = pension.GetCalculationValues(client.AadharNumber).BankType;
-      
-            PensionType pensionType = pension.GetCalculationValues(client.AadharNumber).PensionType;
+     
+            
             double pensionAmount;
 
-            double salary = pension.GetCalculationValues(client.AadharNumber).SalaryEarned;
-            double allowances = pension.GetCalculationValues(client.AadharNumber).Allowances;
-
-            if (pensionType == PensionType.Self)
-                pensionAmount = (0.8 * salary) + allowances;
-            else
-                pensionAmount = (0.5 * salary) + allowances;
-
-            if (pension.GetCalculationValues(client.AadharNumber).BankType == 1)
-                pensionAmount = pensionAmount + 500;
-            else
-                pensionAmount = pensionAmount + 550;
-
+            ValueforCalCulation pensionerInfo = pension.GetCalculationValues(client.AadharNumber);
+            pensionAmount = CalculatePensionAmount(pensionerInfo.SalaryEarned,pensionerInfo.Allowances,pensionerInfo.BankType,pensionerInfo.PensionType);
+            
             int statusCode;
 
             PensionDetail mvcClientOutput = new PensionDetail();
@@ -91,7 +80,7 @@ namespace ProcessPension.Controllers
                 mvcClientOutput.pensionAmount = pensionAmount;
                 mvcClientOutput.dateOfBirth = pensionDetail.DateOfBirth.Date;
                 mvcClientOutput.pensionType = pension.GetCalculationValues(client.AadharNumber).PensionType;
-                mvcClientOutput.bankType = bankType;
+                mvcClientOutput.bankType = pensionerInfo.BankType;
                 mvcClientOutput.aadharNumber = pensionDetail.AadharNumber;
                 mvcClientOutput.status = 20;
             }
@@ -140,7 +129,27 @@ namespace ProcessPension.Controllers
             }
             return mvcClientOutput;
         }
+
+        private double CalculatePensionAmount(int salary, int allowances,int bankType , PensionType pensionType)
+        {
+            double pensionAmount;
+            if (pensionType == PensionType.Self)
+                pensionAmount = (0.8 * salary) + allowances;
+            else
+                pensionAmount = (0.5 * salary) + allowances;
+
+            if (bankType == 1)
+                pensionAmount = pensionAmount + 500;
+            else
+                pensionAmount = pensionAmount + 550;
+
+            return pensionAmount;
+        }
+
     }
+
+
+
     public class Result
     {
         public string message { get; set; }
