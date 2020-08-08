@@ -79,7 +79,7 @@ namespace ProcessPension.Controllers
                 mvcClientOutput.pan = pensionDetail.Pan;
                 mvcClientOutput.pensionAmount = pensionAmount;
                 mvcClientOutput.dateOfBirth = pensionDetail.DateOfBirth.Date;
-                mvcClientOutput.pensionType = pension.GetCalculationValues(client.AadharNumber).PensionType;
+                mvcClientOutput.pensionType = pensionerInfo.PensionType;
                 mvcClientOutput.bankType = pensionerInfo.BankType;
                 mvcClientOutput.aadharNumber = pensionDetail.AadharNumber;
                 mvcClientOutput.status = 20;
@@ -90,7 +90,7 @@ namespace ProcessPension.Controllers
                 mvcClientOutput.pan = "";
                 mvcClientOutput.pensionAmount = 0;
                 mvcClientOutput.dateOfBirth = new DateTime(2000, 01, 01);
-                mvcClientOutput.pensionType = pension.GetCalculationValues(client.AadharNumber).PensionType;
+                mvcClientOutput.pensionType =pensionerInfo.PensionType;
                 mvcClientOutput.bankType = 1;
                 mvcClientOutput.aadharNumber = "****";
                 mvcClientOutput.status = 21;
