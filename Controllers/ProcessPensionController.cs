@@ -52,13 +52,13 @@ namespace ProcessPension.Controllers
             if (pensionDetail == null)
             {
                 PensionDetail mvc = new PensionDetail();
-                mvc.name = "";
-                mvc.pan = "";
-                mvc.pensionAmount = 0;
-                mvc.dateOfBirth = new DateTime(2000, 01, 01);
-                mvc.bankType = 1;
-                mvc.aadharNumber = "***";
-                mvc.status = 20;
+                mvc.Name = "";
+                mvc.Pan = "";
+                mvc.PensionAmount = 0;
+                mvc.DateOfBirth = new DateTime(2000, 01, 01);
+                mvc.BankType = 1;
+                mvc.AadharNumber = "***";
+                mvc.Status = 20;
                 return mvc;
             }
            
@@ -75,25 +75,25 @@ namespace ProcessPension.Controllers
 
             if (client.Pan.Equals(pensionDetail.Pan)&&client.Name.Equals(pensionDetail.Name)&& client.PensionType.Equals(pensionDetail.PensionType)&& client.DateOfBirth.Equals(pensionDetail.DateOfBirth))
             {
-                mvcClientOutput.name = pensionDetail.Name;
-                mvcClientOutput.pan = pensionDetail.Pan;
-                mvcClientOutput.pensionAmount = pensionAmount;
-                mvcClientOutput.dateOfBirth = pensionDetail.DateOfBirth.Date;
-                mvcClientOutput.pensionType = pensionerInfo.PensionType;
-                mvcClientOutput.bankType = pensionerInfo.BankType;
-                mvcClientOutput.aadharNumber = pensionDetail.AadharNumber;
-                mvcClientOutput.status = 20;
+                mvcClientOutput.Name = pensionDetail.Name;
+                mvcClientOutput.Pan = pensionDetail.Pan;
+                mvcClientOutput.PensionAmount = pensionAmount;
+                mvcClientOutput.DateOfBirth = pensionDetail.DateOfBirth.Date;
+                mvcClientOutput.PensionType = pensionerInfo.PensionType;
+                mvcClientOutput.BankType = pensionerInfo.BankType;
+                mvcClientOutput.AadharNumber = pensionDetail.AadharNumber;
+                mvcClientOutput.Status = 20;
             }
             else
             {
-                mvcClientOutput.name = "";
-                mvcClientOutput.pan = "";
-                mvcClientOutput.pensionAmount = 0;
-                mvcClientOutput.dateOfBirth = new DateTime(2000, 01, 01);
-                mvcClientOutput.pensionType =pensionerInfo.PensionType;
-                mvcClientOutput.bankType = 1;
-                mvcClientOutput.aadharNumber = "****";
-                mvcClientOutput.status = 21;
+                mvcClientOutput.Name = "";
+                mvcClientOutput.Pan = "";
+                mvcClientOutput.PensionAmount = 0;
+                mvcClientOutput.DateOfBirth = new DateTime(2000, 01, 01);
+                mvcClientOutput.PensionType =pensionerInfo.PensionType;
+                mvcClientOutput.BankType = 1;
+                mvcClientOutput.AadharNumber = "****";
+                mvcClientOutput.Status = 21;
 
                 return mvcClientOutput;
             }
@@ -123,7 +123,7 @@ namespace ProcessPension.Controllers
                 //statusCode = Int32.Parse(status);
                 Result result = JsonConvert.DeserializeObject<Result>(status);
                 statusCode = result.result;
-                mvcClientOutput.status = statusCode;
+                mvcClientOutput.Status = statusCode;
 
                 return mvcClientOutput;
             }

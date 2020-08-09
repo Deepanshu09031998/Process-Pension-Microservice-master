@@ -8,13 +8,13 @@ namespace ProcessPension
 {
     public class PensionDetail
     {
-        public string name { get; set; }
-        public double pensionAmount { get; set; }
-        public string pan { get; set; }
-        public string aadharNumber { get; set; }
-        public DateTime dateOfBirth { get; set; }
-        public PensionType pensionType { get; set; }
-        public int bankType { get; set; }
-        public int status { get; set; }
+        public string Name { get; set; }
+        public double PensionAmount { get; set; }
+        public string Pan { get; set; }
+        public string AadharNumber { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public PensionType PensionType { get; set; }
+        public int BankType { get; set; }
+        public int Status { get; set; }
     }
 }
